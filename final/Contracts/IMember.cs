@@ -1,6 +1,6 @@
-﻿using Calendars2.Models;
-using Calendars2.Dtos;
-namespace Calendars2.Contracts
+﻿using final.Models;
+using final.Dtos;
+namespace final.Contracts
 {
     public interface IMember
     {

@@ -1,9 +1,9 @@
-﻿using Calendars2.Contracts;
-using Calendars2.Dtos;
-using Calendars2.Models;
+﻿using final.Contracts;
+using final.Dtos;
+using final.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Calendars2.Controllers
+namespace final.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

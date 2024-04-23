@@ -1,11 +1,11 @@
-﻿using Calendars2.Contracts;
-using Calendars2.Utilities;
-using Calendars2.Models;
-using Calendars2.Dtos;
+﻿using final.Contracts;
+using final.Utilities;
+using final.Models;
+using final.Dtos;
 using Dapper;
 using System.Data;
 
-namespace Calendars2.Repositories
+namespace final.Repositories
 {
     public class CalendarRepository:ICalendar
     {

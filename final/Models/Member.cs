@@ -1,4 +1,4 @@
-﻿namespace Calendars2.Models
+﻿namespace final.Models
 {
     public class Member
     {

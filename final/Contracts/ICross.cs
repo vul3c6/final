@@ -1,5 +1,5 @@
-﻿using Calendars2.Dtos;
-namespace Calendars2.Contracts
+﻿using final.Dtos;
+namespace final.Contracts
 {
     public interface ICross
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Calendars2.Dtos
+namespace final.Dtos
 {
     public class CalendarForUpdateDto
     {

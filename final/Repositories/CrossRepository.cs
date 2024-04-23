@@ -1,8 +1,8 @@
-﻿using Calendars2.Contracts;
-using Calendars2.Utilities;
-using Calendars2.Dtos;
+﻿using final.Contracts;
+using final.Utilities;
+using final.Dtos;
 using Dapper;
-namespace Calendars2.Repositories
+namespace final.Repositories
 {
     public class CrossRepository : ICross
     {

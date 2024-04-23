@@ -1,6 +1,6 @@
-﻿using Calendars2.Contracts;
+﻿using final.Contracts;
 using Microsoft.AspNetCore.Mvc;
-namespace Calendars2.Controllers
+namespace final.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
