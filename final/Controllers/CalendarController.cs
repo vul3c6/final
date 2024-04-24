@@ -1,6 +1,5 @@
 ﻿using final.Contracts;
 using final.Dtos;
-using final.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace final.Controllers
@@ -42,7 +41,7 @@ namespace final.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-            [HttpPost] 
+        [HttpPost]
         public async Task<IActionResult> CreateCalendar(CalendarForCreationDto calendar)
         {
             try
@@ -55,7 +54,7 @@ namespace final.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        [HttpPut("{id}")] 
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCalendar(int id, CalendarForUpdateDto calendar)
         {
             try
