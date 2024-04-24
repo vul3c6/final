@@ -1,6 +1,7 @@
 ﻿using final.Contracts;
 using final.Utilities;
 using final.Dtos;
+using final.Models;
 using Dapper;
 namespace final.Repositories
 {
@@ -33,6 +34,30 @@ namespace final.Repositories
                 var multi = await connection.QueryMultipleAsync(sqlQuery, new { Id = id });
                 var calendar = await multi.ReadSingleOrDefaultAsync<MembersOfCalendar>();
                 if (calendar != null) calendar.Members = (await multi.ReadAsync<String>()).ToList();
+                return calendar;
+            }
+        }
+        // 查詢Member 和他/她參與的所有Calendars 的詳細資料（依指定id）
+        public async Task<CalendarDetailsOfMember> GetCalendarDetailsByMemberId(Guid id)
+        {
+            string sqlQuery = "SELECT Mid, Mname, Mphone FROM Member WHERE Mid = @Id;" +"SELECT C.* FROM Calendar C, CalendarJoin J " +"WHERE J.Mid = @Id AND C.Cid = J.Cid;";
+            using (var connection = _dbContext.CreateConnection())
+            {
+                var multi = await connection.QueryMultipleAsync(sqlQuery, new { Id = id });
+                var member = await multi.ReadSingleOrDefaultAsync<CalendarDetailsOfMember>();
+                if (member !=null)member.Calendars = (await multi.ReadAsync<Calendar>()).ToList();
+                return member;
+            }
+        }
+        // 查詢Calendar 和參與的所有Member 的詳細資料（依指定id）
+        public async Task<MemberDetailsOfCalendar> GetMemberDetailsByCalendarId(int id)
+        {
+            string sqlQuery = "SELECT Cid, Cname FROM Calendar WHERE Cid = @Id;" +"SELECT M.* FROM Member M, CalendarJoin J " +"WHERE J.Cid = @Id AND M.Mid = J.Mid;";
+            using (var connection = _dbContext.CreateConnection())
+            {
+                var multi = await connection.QueryMultipleAsync(sqlQuery, new { Id= id });
+                var calendar = await multi.ReadSingleOrDefaultAsync<MemberDetailsOfCalendar>();
+                if (calendar != null)calendar.Members = (await multi.ReadAsync<Member>()).ToList();
                 return calendar;
             }
         }

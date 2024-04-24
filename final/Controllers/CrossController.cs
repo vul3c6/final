@@ -33,5 +33,62 @@ namespace final.Controllers
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
         }
+        [HttpGet("MembersForCalendar/{id}")]
+        public async Task<IActionResult> GetMembersByCalendarId(int id)
+        {
+            try
+            {
+                // 取得指定id 的會員資料
+                var members = await _cross.GetMembersByCalendarId(id);
+                return Ok(new
+                {
+                    Success = true,
+                    Message = "取得指定id 會員的所有行事曆成功",
+                    Data = members
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpGet("CalendarDetailsForMember/{id}")]
+        public async Task<IActionResult> GetCalendarDetailsByMemberId(Guid id)
+        {
+            try
+            {
+                // 取得指定id 的會員資料
+                var calendarDetails = await _cross.GetCalendarDetailsByMemberId(id);
+                return Ok(new
+                {
+                    Success = true,
+                    Message = "取得指定id 會員的所有行事曆詳細資料成功",
+                    Data = calendarDetails
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpGet("MemberDetailsForCalendar/{id}")]
+        public async Task<IActionResult> GetMemberDetailsByCalendarId(int id)
+        {
+            try
+            {
+                // 取得指定id 的行事曆資料
+                var memberDetails = await _cross.GetMemberDetailsByCalendarId(id);
+                return Ok(new
+                {
+                    Success = true,
+                    Message = "取得指定id 行事曆的所有會員詳細資料成功",
+                    Data = memberDetails
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
