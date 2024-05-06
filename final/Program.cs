@@ -1,3 +1,5 @@
+using final.Contracts;
+using final.Repositories;
 using final.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +11,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 注入一個單例的DbContext 類別來協助資料庫連線
 builder.Services.AddSingleton<DbContext>();
+// 將MemberRepository 類型的實例注入到IMember 容器中
+builder.Services.AddScoped<IMember, MemberRepository>();
+// 將CalendarRepository 類型的實例注入到ICalendar 容器中
+builder.Services.AddScoped<ICalendar, CalendarRepository>();
+// 將CrossRepository 類型的實例注入到ICross 容器中
+builder.Services.AddScoped<ICross, CrossRepository>();
 
 var app = builder.Build();
 
